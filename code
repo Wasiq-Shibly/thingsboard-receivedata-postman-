@@ -1,0 +1,26 @@
+<?php
+
+// Retrieve the "amount" field from the data
+$amount = isset($data['amount']) ? $data['amount'] : null;
+
+// Prepare response
+if ($amount !== null) {
+    $response = array(
+        "status" => "success",
+        "message" => "Data received successfully",
+        "amount" => $amount
+    );
+} else {
+    $response = array(
+        "status" => "error",
+        "message" => "Missing 'amount' field in data"
+    );
+}
+
+// Set response headers
+header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+
+// Output JSON response
+echo json_encode($response);
+?>
